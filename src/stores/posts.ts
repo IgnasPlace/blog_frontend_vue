@@ -1,6 +1,6 @@
 import { ref, computed, type Ref } from 'vue'
 import { defineStore } from 'pinia'
-import { type PostsState } from '@/types'
+import { type Post, type PostsState } from '@/types'
 
 export const usePostsStore = defineStore('posts', () => {
   const posts: Ref<PostsState> = ref([])
@@ -17,6 +17,22 @@ export const usePostsStore = defineStore('posts', () => {
   function deletePost(payload: number) {
     posts.value = posts.value.filter((post) => post.id !== payload)
   }
+  function updatePost(payload: Post) {
+    const idx = posts.value.findIndex((post) => post.id === payload.id)
+    posts.value[idx] = payload
+  }
+  function addPost(payload: Post) {
+    posts.value.unshift(payload)
+  }
 
-  return { posts, getPosts, setPosts, getLoadingPosts, setLoadingPosts, deletePost }
+  return {
+    posts,
+    getPosts,
+    setPosts,
+    getLoadingPosts,
+    setLoadingPosts,
+    deletePost,
+    updatePost,
+    addPost
+  }
 })

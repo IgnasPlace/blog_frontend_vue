@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import UiCard from './UiCard.vue'
+import UiLoading from './UiLoading.vue'
+import { useUserStore } from '@/stores/user'
 
 const { user } = defineProps(['user'])
+const userStore = useUserStore()
 </script>
 
 <template>
   <UiCard>
-    <span v-if="!user">No user found</span>
+    <UiLoading v-if="userStore.getLoadingUser" />
+    <span v-else-if="!user">No user found</span>
     <div v-else class="flex justify-between gap-4">
       <img
         class="h-16 w-16 rounded-full object-cover"

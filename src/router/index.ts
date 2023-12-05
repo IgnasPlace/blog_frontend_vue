@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// import { useUserStore } from '../stores/user'
+import { useUserStore } from '../stores/user'
 import AllPosts from '../views/AllPosts.vue'
 import MyPosts from '../views/MyPosts.vue'
 import CreatePost from '../views/CreatePost.vue'
@@ -43,6 +43,12 @@ const router = createRouter({
     //   component: () => import('../views/AboutView.vue')
     // }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  const { isAuthenticated } = useUserStore()
+  if (to.name !== 'login' && !isAuthenticated) next({ name: 'login' })
+  else next()
 })
 
 // router.beforeEach((to, from) => {

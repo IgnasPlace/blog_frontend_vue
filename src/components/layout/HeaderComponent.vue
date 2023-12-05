@@ -36,13 +36,6 @@ const handleLogout = () => {
           active-class=" bg-white text-violet-900"
           >Add New Post</RouterLink
         >
-        <RouterLink
-          v-if="!userStore.isAuthenticated"
-          :to="{ name: 'login' }"
-          class="px-2 rounded-md hover:bg-white hover:text-violet-900 duration-200"
-          active-class=" bg-white text-violet-900"
-          >Login</RouterLink
-        >
         <button
           v-if="userStore.isAuthenticated"
           @click="handleLogout"

@@ -6,6 +6,7 @@ import { getUser } from './utils/getUser'
 import { getPosts } from './utils/getPosts'
 import { useUserStore } from './stores/user'
 import { usePostsStore } from './stores/posts'
+import router from './router'
 
 const userStore = useUserStore()
 const postsStore = usePostsStore()
@@ -16,9 +17,11 @@ onMounted(async () => {
     const userFromAPI = await getUser()
     if (userFromAPI) {
       userStore.setUser(userFromAPI.user)
+      router.push({ name: 'allPosts' })
     }
   } catch (err) {
     console.error(err)
+    router.push({ name: 'login' })
   } finally {
     userStore.setLoadingUser(false)
   }

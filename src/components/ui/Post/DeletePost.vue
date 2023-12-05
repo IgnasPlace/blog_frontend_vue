@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Ref, ref } from 'vue'
+import { type Ref, ref } from 'vue'
 import UiButton from '../UiButton.vue'
 import UiLoading from '../UiLoading.vue'
 import { usePostsStore } from '../../../stores/posts'
