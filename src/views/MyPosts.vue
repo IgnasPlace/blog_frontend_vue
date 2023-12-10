@@ -24,7 +24,7 @@ const posts = computed(() =>
       </div>
       <ProfileCard :user="user" />
     </div>
-    <h3 v-if="posts.length === 0">No posts found..</h3>
+    <h3 v-if="posts.length === 0" class="text-xl mt-8">No posts found..</h3>
     <PostsList v-else :posts="posts" />
   </main>
 </template>

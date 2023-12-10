@@ -64,7 +64,7 @@ const sendCreatePost = async (newPost: NewPost) => {
       setTimeout(() => {
         postCreated.value = ''
         router.push('/')
-      }, 1500)
+      }, 1000)
     })
     .catch((error) => {
       createFailed.value = error

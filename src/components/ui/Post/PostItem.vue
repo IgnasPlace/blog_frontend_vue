@@ -10,18 +10,18 @@ const setEditViewOpened = () => (editViewOpened.value = !editViewOpened.value)
 </script>
 
 <template>
-  <li class="w-full mb-4">
-    <Transition name="fade" appear>
-      <UiCard>
-        <EditPost v-if="editViewOpened" :post="post" @closeEditView="setEditViewOpened" />
-        <PostContent v-else :post="post" @openEditView="setEditViewOpened" />
-      </UiCard>
-    </Transition>
+  <li class="w-full h-full mb-4">
+    <!-- <Transition name="fade" appear> -->
+    <UiCard>
+      <EditPost v-if="editViewOpened" :post="post" @closeEditView="setEditViewOpened" />
+      <PostContent v-else :post="post" @openEditView="setEditViewOpened" />
+    </UiCard>
+    <!-- </Transition> -->
   </li>
 </template>
 
 <style scoped>
-.fade-enter-from {
+/* .fade-enter-from {
   opacity: 0;
 }
 
@@ -32,5 +32,5 @@ const setEditViewOpened = () => (editViewOpened.value = !editViewOpened.value)
 
 .fade-leave-to {
   opacity: 0;
-}
+} */
 </style>
